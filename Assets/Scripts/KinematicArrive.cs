@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class KinematicArrive : MonoBehaviour
 {
@@ -8,56 +6,51 @@ public class KinematicArrive : MonoBehaviour
     public Kinematic target;
     public float maxSpeed;
 
+    // Satisfaction radius
     public float radius;
 
+    // Time to target
     public float timeToTarget = 0.25f;
 
     /// <summary>
-    /// Calculates the steering output for the kinematic arrive behavior.
+    /// Calculates the steering output for arriving at the target.
     /// </summary>
-    /// <returns>
-    /// A KinematicSteeringOutput containing the velocity and rotation needed to arrive at the target.
-    /// Returns null if the character is within the arrival radius.
-    /// </returns>
-    public KinematicSteeringOutput getSteering()
+    /// <returns>The kinematic steering output.</returns>
+    KinematicSteeringOutput GetSteering()
     {
         KinematicSteeringOutput result = new KinematicSteeringOutput();
-    
-        // Calculate the distance to the target.
+
+        // Get direction to target
         result.velocity = target.transform.position - character.transform.position;
-    
-        // If the character is within the arrival radius, no steering is needed.
+
+        // Check if within radius
         if (result.velocity.magnitude < radius)
         {
-            return null;
+            // If within the satisfaction radius, stop moving
+            result.velocity = Vector3.zero;
+            return result;
         }
-    
-        // Adjust the velocity to take into account the time to target.
+
+        // Move to target
         result.velocity /= timeToTarget;
-    
-        // Ensure the velocity does not exceed the maximum speed.
+
+        // If too fast, clamp to maxSpeed
         if (result.velocity.magnitude > maxSpeed)
         {
-            result.velocity.Normalize();
-            result.velocity *= maxSpeed;
+            result.velocity = result.velocity.normalized * maxSpeed;
         }
-    
-        // Update the character's orientation based on the new velocity.
-        character.orientation = character.newOrientation(character.orientation, result.velocity);
-    
-        // Set the rotation to zero as this is a kinematic behavior.
+
+        // Face in the direction we want to move
+        character.NewOrientation(character.transform.rotation.eulerAngles.z, result.velocity);
+
         result.rotation = 0;
-    
         return result;
-    }
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // Update the character's kinematic state based on the steering output
+        character.UpdateKinematic(GetSteering());
     }
 }
