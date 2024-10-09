@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Pursue : DynamicSeek
+public class Persue : DynamicSeek
 {
     // Maximum prediction time
     public float maxPrediction;

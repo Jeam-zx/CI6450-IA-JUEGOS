@@ -6,7 +6,6 @@ public class DynamicFlee : MonoBehaviour
     public Kinematic target;
     public float maxAcceleration;
     public float maxSpeed;
-    public float escapeRadius;
 
     /// <summary>
     /// Calculates the steering output for fleeing from the target.
@@ -18,16 +17,6 @@ public class DynamicFlee : MonoBehaviour
 
         // Get the direction to the target or away from it.
         Vector3 direction = character.transform.position - target.transform.position;
-
-        // Check if the character is within the escape radius.
-        if (direction.magnitude > escapeRadius)
-        {
-            // If outside the escape radius, no fleeing movement is needed.
-            result.linear = Vector3.zero;
-            result.angular = 0;
-            character.velocity = Vector3.zero;
-            return result;
-        }
 
         // The velocity is along this direction, at maximum acceleration.
         result.linear = direction.normalized * maxAcceleration;
@@ -47,26 +36,43 @@ public class DynamicFlee : MonoBehaviour
         // Get the direction to the target or away from it.
         Vector3 direction = character.transform.position - targetPosition;
 
-        // Check if the character is within the escape radius.
-        if (direction.magnitude > escapeRadius)
-        {
-            // If outside the escape radius, no fleeing movement is needed.
-            result.linear = Vector3.zero;
-            result.angular = 0;
-            character.velocity = Vector3.zero;
-            return result;
-        }
-
         // The velocity is along this direction, at maximum acceleration.
         result.linear = direction.normalized * maxAcceleration;
         result.angular = 0;
         return result;
     }
 
+    /// <summary>
+    /// Adjusts the character's velocity and steering output to handle world boundaries.
+    /// </summary>
+    /// <param name="steering">The current steering output.</param>
+    /// <returns>The adjusted steering output.</returns>
+    private SteeringOutput HandleWorldBoundaries(SteeringOutput steering)
+    {
+        // Calculate the future position of the character
+        Vector3 futurePosition = character.transform.position + character.velocity * Time.deltaTime;
+    
+        // Check and handle the x boundaries
+        if (futurePosition.x > 10 || futurePosition.x < -10)
+        {
+            character.velocity.x = 0;
+            steering.linear.x = 0;
+        }
+    
+        // Check and handle the y boundaries
+        if (futurePosition.y > 5 || futurePosition.y < -5)
+        {
+            character.velocity.y = 0;
+            steering.linear.y = 0;
+        }
+    
+        return steering;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        // Update the character's steering based on the steering output.
-        character.UpdateSteering(GetSteering(), maxSpeed);
+        // Update the character's steering based on the steering output
+        character.UpdateSteering(HandleWorldBoundaries(GetSteering()), maxSpeed);
     }
 }

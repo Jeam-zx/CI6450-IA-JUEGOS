@@ -38,10 +38,37 @@ public class Evade : DynamicFlee
         return GetSteeringWithPosition(targetPosition);
     }
 
+    /// <summary>
+    /// Adjusts the character's velocity and steering output to handle world boundaries.
+    /// </summary>
+    /// <param name="result">The current steering output.</param>
+    /// <returns>The adjusted steering output.</returns>
+    private SteeringOutput HandleWorldBoundaries(SteeringOutput steering)
+    {
+        // Calculate the future position of the character
+        Vector3 futurePosition = character.transform.position + character.velocity * Time.deltaTime;
+    
+        // Check and handle the x boundaries
+        if (futurePosition.x > 10 || futurePosition.x < -10)
+        {
+            character.velocity.x = 0;
+            steering.linear.x = 0;
+        }
+    
+        // Check and handle the y boundaries
+        if (futurePosition.y > 5 || futurePosition.y < -5)
+        {
+            character.velocity.y = 0;
+            steering.linear.y = 0;
+        }
+    
+        return steering;
+    }
+
     // Update is called once per frame
     void Update()
     {
         // Update the character's steering based on the steering output
-        character.UpdateSteering(GetSteering(), maxSpeed);
+        character.UpdateSteering(HandleWorldBoundaries(GetSteering()), maxSpeed);
     }
 }

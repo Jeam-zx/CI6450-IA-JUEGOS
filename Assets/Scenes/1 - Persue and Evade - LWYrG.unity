@@ -184,6 +184,143 @@ Transform:
   m_Children: []
   m_Father: {fileID: 322377723}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &213806328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 213806332}
+  - component: {fileID: 213806331}
+  - component: {fileID: 213806330}
+  - component: {fileID: 213806329}
+  - component: {fileID: 213806333}
+  m_Layer: 0
+  m_Name: Nairan - Support Ship - Base
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &213806329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213806328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e08fde85686caa4f8a2eff7d081717f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
+  rotation: 0
+  text: Evade
+--- !u!114 &213806330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213806328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c509096d7a4ce14188028612bce88e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 213806329}
+  target: {fileID: 1112328308}
+  maxAcceleration: 2
+  maxSpeed: 2
+  maxPrediction: 2
+--- !u!212 &213806331
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213806328}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 0944df55ee19f6d4e829eafde6addc4a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.64, y: 0.64}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &213806332
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213806328}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.347645, y: -1.135086, z: -4}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &213806333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213806328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe69fb75003388747828ba5168c3d071, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 213806329}
+  target: {fileID: 0}
+  maxAngularAcceleration: 2
+  maxRotation: 1
+  targetRadius: 1
+  slowRadius: 3
 --- !u!1 &239908627
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +554,7 @@ GameObject:
   - component: {fileID: 422593805}
   - component: {fileID: 422593804}
   - component: {fileID: 422593807}
+  - component: {fileID: 422593808}
   m_Layer: 0
   m_Name: Nairan - Battlecruiser - Base
   m_TagString: Untagged
@@ -438,7 +576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   rotation: 0
-  text: Dynamic Flee
+  text: Persue
 --- !u!212 &422593805
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -500,9 +638,9 @@ Transform:
   m_GameObject: {fileID: 422593802}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.92, y: -0.11, z: -4}
+  m_LocalPosition: {x: 6, y: 4, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -515,14 +653,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 422593802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf7e373a949ca584aa072230b08d4360, type: 3}
+  m_Script: {fileID: 11500000, guid: a71319aa0df6c59488b729e0edb45c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 422593804}
   target: {fileID: 1112328308}
   maxAcceleration: 2
-  maxSpeed: 1.5
-  escapeRadius: 4
+  maxSpeed: 1
+  maxPrediction: 4
+--- !u!114 &422593808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422593802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe69fb75003388747828ba5168c3d071, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 422593804}
+  target: {fileID: 0}
+  maxAngularAcceleration: 2
+  maxRotation: 2
+  targetRadius: 1
+  slowRadius: 2
 --- !u!1 &446955315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,3 +1728,4 @@ SceneRoots:
   - {fileID: 322377723}
   - {fileID: 1993536268}
   - {fileID: 422593806}
+  - {fileID: 213806332}

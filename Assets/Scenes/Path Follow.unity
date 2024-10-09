@@ -339,8 +339,8 @@ Transform:
   m_GameObject: {fileID: 322377720}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.43, y: -3.66, z: -2}
-  m_LocalScale: {x: 8.941601, y: 6.2066073, z: 1}
+  m_LocalPosition: {x: -0.6, y: -9.77, z: 0}
+  m_LocalScale: {x: 25.83765, y: 19.905832, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 292167142}
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   rotation: 0
-  text: Dynamic Flee
+  text: Path Follow
 --- !u!212 &422593805
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -500,9 +500,9 @@ Transform:
   m_GameObject: {fileID: 422593802}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.92, y: -0.11, z: -4}
+  m_LocalPosition: {x: 2.12, y: 2.93, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -515,14 +515,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 422593802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf7e373a949ca584aa072230b08d4360, type: 3}
+  m_Script: {fileID: 11500000, guid: ea741e26780c1af47810d5a0c653575e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 422593804}
-  target: {fileID: 1112328308}
-  maxAcceleration: 2
-  maxSpeed: 1.5
-  escapeRadius: 4
+  target: {fileID: 0}
+  maxAcceleration: 1
+  maxSpeed: 1
+  waypointManager: {fileID: 322377721}
+  pathOffset: 1
+  currentParam: 0
+  predictTime: 0.1
 --- !u!1 &446955315
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +900,7 @@ Transform:
   m_GameObject: {fileID: 1112328305}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9394126, y: -0.20349015, z: -4}
+  m_LocalPosition: {x: 6.83, y: -5.33, z: -4}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
