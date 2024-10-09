@@ -42,7 +42,7 @@ public class DynamicFlee : MonoBehaviour
     /// <returns>The dynamic steering output.</returns>
     protected SteeringOutput GetSteeringWithPosition(Vector3 targetPosition)
     {
-        SteeringOutput result = new SteeringOutput();
+        SteeringOutput result = new();
 
         // Get the direction to the target or away from it.
         Vector3 direction = character.transform.position - targetPosition;

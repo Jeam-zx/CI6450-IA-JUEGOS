@@ -13,7 +13,7 @@ public class KinematicFlee : MonoBehaviour
     /// <returns>The kinematic steering output.</returns>
     KinematicSteeringOutput GetSteering()
     {
-        KinematicSteeringOutput result = new KinematicSteeringOutput();
+        KinematicSteeringOutput result = new();
 
         // Get the direction to the target.
         Vector3 direction = character.transform.position - target.transform.position;

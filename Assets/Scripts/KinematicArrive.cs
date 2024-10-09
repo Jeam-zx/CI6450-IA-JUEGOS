@@ -18,10 +18,11 @@ public class KinematicArrive : MonoBehaviour
     /// <returns>The kinematic steering output.</returns>
     KinematicSteeringOutput GetSteering()
     {
-        KinematicSteeringOutput result = new KinematicSteeringOutput();
-
-        // Get direction to target
-        result.velocity = target.transform.position - character.transform.position;
+        KinematicSteeringOutput result = new()
+        {
+            // Get direction to target
+            velocity = target.transform.position - character.transform.position
+        };
 
         // Check if within radius
         if (result.velocity.magnitude < radius)

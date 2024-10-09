@@ -20,7 +20,7 @@ public class DynamicArrive : MonoBehaviour
     /// <returns>The dynamic steering output.</returns>
     SteeringOutput GetSteering()
     {
-        SteeringOutput result = new SteeringOutput();
+        SteeringOutput result = new();
         Vector3 direction = target.transform.position - character.transform.position;
         float distance = direction.magnitude;
 

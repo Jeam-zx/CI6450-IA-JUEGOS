@@ -6,7 +6,7 @@ public class SteeringOutput
     public float angular;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SteeringOutput"/> class with specified linear and angular components.
+    /// Initializes a new instance of the SteeringOutput class with specified linear and angular components.
     /// </summary>
     /// <param name="linear">The linear component of the steering output.</param>
     /// <param name="angular">The angular component of the steering output.</param>
@@ -17,7 +17,7 @@ public class SteeringOutput
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SteeringOutput"/> class with zero linear and angular components.
+    /// Initializes a new instance of the SteeringOutput class with zero linear and angular components.
     /// </summary>
     public SteeringOutput()
     {

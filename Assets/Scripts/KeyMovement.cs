@@ -5,7 +5,7 @@ public class KeyMovement : MonoBehaviour
     public float maxSpeed;
     public Kinematic character;
     Vector3 velocity;
-    KinematicSteeringOutput result = new KinematicSteeringOutput();
+    readonly KinematicSteeringOutput result = new();
 
     // Update is called once per frame
     void Update()

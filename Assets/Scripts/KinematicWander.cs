@@ -14,14 +14,15 @@ public class KinematicWander : MonoBehaviour
     /// <returns>The kinematic steering output.</returns>
     KinematicSteeringOutput GetSteering()
     {
-        KinematicSteeringOutput result = new KinematicSteeringOutput();
+        KinematicSteeringOutput result = new()
+        {
+            // Get velocity from vector form of orientation
+            velocity = maxSpeed * AsVector(character.transform.rotation.eulerAngles.z),
 
-        // Get velocity from vector form of orientation
-        result.velocity = maxSpeed * AsVector(character.transform.rotation.eulerAngles.z);
+            // Change orientation randomly
+            rotation = RandomBinomial() * maxRotation
+        };
 
-        // Change orientation randomly
-        result.rotation = RandomBinomial() * maxRotation;
-        
         return result;
     }
 

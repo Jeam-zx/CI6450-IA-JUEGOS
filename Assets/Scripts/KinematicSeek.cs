@@ -12,10 +12,11 @@ public class KinematicSeek : MonoBehaviour
     /// <returns>The kinematic steering output.</returns>
     KinematicSteeringOutput GetSteering()
     {
-        KinematicSteeringOutput result = new KinematicSteeringOutput();
-
-        // Get the direction to the target.
-        result.velocity = target.transform.position - character.transform.position;
+        KinematicSteeringOutput result = new()
+        {
+            // Get the direction to the target.
+            velocity = target.transform.position - character.transform.position
+        };
 
         // The velocity is along this direction, at full speed.
         result.velocity = result.velocity.normalized * maxSpeed;
