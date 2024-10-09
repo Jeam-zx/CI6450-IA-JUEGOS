@@ -117,13 +117,11 @@ public class Kinematic : MonoBehaviour
         if (transform.position.x > 12 || transform.position.x < -12)
         {
             transform.position = new Vector3(-transform.position.x, transform.position.y, transform.position.z);
-            velocity = new Vector3(-velocity.x, velocity.y, velocity.z);
         }
         // Check if the position is outside the vertical bounds.
         else if (transform.position.y > 7 || transform.position.y < -7)
         {
             transform.position = new Vector3(transform.position.x, -transform.position.y, transform.position.z);
-            velocity = new Vector3(velocity.x, -velocity.y, velocity.z);
         }
     }
 }
