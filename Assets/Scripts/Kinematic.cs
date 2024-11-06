@@ -105,23 +105,5 @@ public class Kinematic : MonoBehaviour
     {
         // Update the text position and wrap the position around screen edges.
         textHandler.UpdateTextPosition();
-        WrapPositionAroundScreenEdges();
-    }
-
-    /// <summary>
-    /// Wraps the position around the screen edges.
-    /// </summary>
-    private void WrapPositionAroundScreenEdges()
-    {
-        // Check if the position is outside the horizontal bounds.
-        if (transform.position.x > 12 || transform.position.x < -12)
-        {
-            transform.position = new Vector3(-transform.position.x, transform.position.y, transform.position.z);
-        }
-        // Check if the position is outside the vertical bounds.
-        else if (transform.position.y > 7 || transform.position.y < -7)
-        {
-            transform.position = new Vector3(transform.position.x, -transform.position.y, transform.position.z);
-        }
     }
 }
