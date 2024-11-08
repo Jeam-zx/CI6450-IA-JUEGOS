@@ -5378,7 +5378,7 @@ MonoBehaviour:
   maxAcceleration: 0
   character: {fileID: 113722540}
   graph: {fileID: 260408185}
-  nameCharacter: 
+  nameCharacter: Player2
 --- !u!114 &113722545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5403,8 +5403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4966e8f67c99bdc488e74755d53362be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAcceleration: 2
-  threshold: 2
+  maxAcceleration: 4
+  threshold: 5
 --- !u!1 &116654994
 GameObject:
   m_ObjectHideFlags: 0
@@ -5641,12 +5641,12 @@ PrefabInstance:
     - target: {fileID: 8150476868300563375, guid: 2e2ac125e54a1e44780363d638b1df34,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.010002
+      value: 35.75
       objectReference: {fileID: 0}
     - target: {fileID: 8150476868300563375, guid: 2e2ac125e54a1e44780363d638b1df34,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.94
+      value: 23.68
       objectReference: {fileID: 0}
     - target: {fileID: 8150476868300563375, guid: 2e2ac125e54a1e44780363d638b1df34,
         type: 3}
@@ -20163,7 +20163,7 @@ MonoBehaviour:
   maxAcceleration: 0
   character: {fileID: 597554056}
   graph: {fileID: 260408185}
-  nameCharacter: 
+  nameCharacter: Enemy1
 --- !u!114 &597554056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22194,7 +22194,7 @@ PrefabInstance:
     - target: {fileID: 5445290070679724821, guid: 17b2559b65857488796ce0bf29f56a02,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.04
+      value: -0.16
       objectReference: {fileID: 0}
     - target: {fileID: 5445290070679724821, guid: 17b2559b65857488796ce0bf29f56a02,
         type: 3}
@@ -22219,12 +22219,12 @@ PrefabInstance:
     - target: {fileID: 5445290070679724821, guid: 17b2559b65857488796ce0bf29f56a02,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 42.73
+      value: 49.32
       objectReference: {fileID: 0}
     - target: {fileID: 5445290070679724821, guid: 17b2559b65857488796ce0bf29f56a02,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 24.71
+      value: 25.01
       objectReference: {fileID: 0}
     - target: {fileID: 5445290070679724821, guid: 17b2559b65857488796ce0bf29f56a02,
         type: 3}
@@ -26044,7 +26044,7 @@ PrefabInstance:
     - target: {fileID: 5697883577419187425, guid: 420c9e2d4f8084ea68e81a6ff465b947,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.15
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 5697883577419187425, guid: 420c9e2d4f8084ea68e81a6ff465b947,
         type: 3}
@@ -26069,12 +26069,12 @@ PrefabInstance:
     - target: {fileID: 5697883577419187425, guid: 420c9e2d4f8084ea68e81a6ff465b947,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 52.52
+      value: 42.51
       objectReference: {fileID: 0}
     - target: {fileID: 5697883577419187425, guid: 420c9e2d4f8084ea68e81a6ff465b947,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 31.82
+      value: 25.43
       objectReference: {fileID: 0}
     - target: {fileID: 5697883577419187425, guid: 420c9e2d4f8084ea68e81a6ff465b947,
         type: 3}
@@ -26863,7 +26863,7 @@ MonoBehaviour:
   maxAcceleration: 0
   character: {fileID: 889028097}
   graph: {fileID: 260408185}
-  nameCharacter: 
+  nameCharacter: Enemy2
 --- !u!1001 &896733248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39234,7 +39234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   rotation: 0
-  text: 
+  text: Player1
 --- !u!114 &1436477660
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -110,17 +110,15 @@ public static class Conditions
     /// <summary>
     /// Checks if any nearby enemies have a higher maximum acceleration than the AI character.
     /// </summary>
-    /// <param name="gameObject">The AI character's game object.</param>
+    /// <param name="maxAcceleration">The AI character's maxAcceleration.</param>
     /// <returns>True if any nearby enemies have a higher maximum acceleration, otherwise false.</returns>
-    public static bool CheckEnemySpeed(GameObject gameObject)
+    public static bool CheckEnemySpeed(float maxAcceleration)
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
+        GameObject enemy = GameObject.Find("Enemy1");
+
+        if (enemy.GetComponent<IAControllerDecisionTree>().maxAcceleration > maxAcceleration)
         {
-            if (enemy.GetComponent<PathFinding>().maxAcceleration > gameObject.GetComponent<PathFinding>().maxAcceleration)
-            {
-                return true;
-            }
+            return true;
         }
         return false;
     }

@@ -36,7 +36,7 @@ public class DecisionTree : MonoBehaviour
                 Yes = new DecisionNode("¿Es rápido?")
                 {
                     Yes = new DecisionNode("", "Daño"),
-                    No = new DecisionNode("", "Escoderse")
+                    No = new DecisionNode("", "Esconderse")
                 },
 
                 No = new DecisionNode("¿Hay recursos?")

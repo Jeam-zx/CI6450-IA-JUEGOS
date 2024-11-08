@@ -53,7 +53,7 @@ public class IAControllerDecisionTree : MonoBehaviour
             case "¿Son más de uno?":
                 return Conditions.CheckMultipleEnemies(transform, threshold);
             case "¿Es rápido?":
-                return Conditions.CheckEnemySpeed(gameObject);
+                return Conditions.CheckEnemySpeed(maxAcceleration);
             case "¿Los jugadores están cerca?":
                 return Conditions.CheckPlayersNearby(transform, threshold);
             default:
