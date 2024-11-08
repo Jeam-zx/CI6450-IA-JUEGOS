@@ -1,19 +1,44 @@
-using System;
-using UnityEngine;
-
-public class DecisionNode : MonoBehaviour
+/// <summary>
+/// Node of the decision tree.
+/// </summary>
+public class DecisionNode
 {
-    private DecisionNode trueNode;
-    private DecisionNode falseNode;
+    /// <summary>
+    /// The question or decision at this node.
+    /// </summary>
+    public string Question { get; set; }
 
-    public DecisionNode(DecisionNode trueNode, DecisionNode falseNode)
-    {
-        this.trueNode = trueNode;
-        this.falseNode = falseNode;
-    }
+    /// <summary>
+    /// The branch if the answer is yes.
+    /// </summary>
+    public DecisionNode Yes { get; set; }
 
-    public virtual DecisionNode MakeDecision()
+    /// <summary>
+    /// The branch if the answer is no.
+    /// </summary>
+    public DecisionNode No { get; set; }
+
+    /// <summary>
+    /// The action to perform if this is a leaf node.
+    /// </summary>
+    public string Action { get; set; }
+
+    /// <summary>
+    /// Indicates if this is a leaf node.
+    /// </summary>
+    public bool IsLeaf { get; set; }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DecisionNode"/> class.
+    /// </summary>
+    /// <param name="question">The question or decision at this node.</param>
+    /// <param name="action">The action to perform if this is a leaf node.</param>
+    public DecisionNode(string question = "", string action = "")
     {
-        return null;
+        Question = question;
+        Action = action;
+        Yes = null;
+        No = null;
+        IsLeaf = string.IsNullOrEmpty(question);
     }
 }

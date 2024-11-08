@@ -1,18 +1,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class that represents a graph structure with nodes and edges.
+/// </summary>
 public class Graph : MonoBehaviour
 {
+    /// <summary>
+    /// Dictionary of nodes in the graph, keyed by node ID.
+    /// </summary>
     public Dictionary<int, Node> Nodes { get; private set; } = new Dictionary<int, Node>();
 
+    /// <summary>
+    /// Initializes the graph by calculating nodes and edges, and drawing triangles.
+    /// </summary>
     void Start()
     {
         CalculateNodes();
         CalculateEdges();
         DrawTriangles();
-
     }
 
+    /// <summary>
+    /// Updates the graph each frame by drawing triangles.
+    /// </summary>
+    void Update()
+    {
+        DrawTriangles();
+    }
+
+    /// <summary>
+    /// Calculates the nodes in the graph based on game objects with the "map" tag.
+    /// </summary>
     public void CalculateNodes()
     {
         int id = 0;
@@ -31,6 +50,11 @@ public class Graph : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets the closest node to a given point.
+    /// </summary>
+    /// <param name="point">The point to find the closest node to.</param>
+    /// <returns>The closest node to the given point.</returns>
     public Node GetClosestNode(Vector3 point)
     {
         Node closestNode = null;
@@ -47,9 +71,11 @@ public class Graph : MonoBehaviour
         }
 
         return closestNode;
-
     }
 
+    /// <summary>
+    /// Calculates the edges between nodes in the graph.
+    /// </summary>
     public void CalculateEdges()
     {
         foreach (var nodePair1 in Nodes)
@@ -79,6 +105,9 @@ public class Graph : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Draws the triangles representing the nodes in the graph.
+    /// </summary>
     public void DrawTriangles()
     {
         foreach (var nodePair in Nodes)
@@ -90,11 +119,23 @@ public class Graph : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Draws an edge between two nodes.
+    /// </summary>
+    /// <param name="edge">The edge to draw.</param>
     public void DrawEdge(Edge edge)
     {
         Debug.DrawLine(edge.Node1.Center, edge.Node2.Center, Color.red);
     }
 
+    /// <summary>
+    /// Checks if two points are on the same side of a line.
+    /// </summary>
+    /// <param name="point1">The first point.</param>
+    /// <param name="point2">The second point.</param>
+    /// <param name="linePoint1">The first point on the line.</param>
+    /// <param name="linePoint2">The second point on the line.</param>
+    /// <returns>True if the points are on the same side of the line, otherwise false.</returns>
     private bool ArePointsOnSameSide(Vector3 point1, Vector3 point2, Vector3 linePoint1, Vector3 linePoint2)
     {
         Vector3 crossProduct1 = Vector3.Cross(linePoint2 - linePoint1, point1 - linePoint1);
@@ -102,6 +143,14 @@ public class Graph : MonoBehaviour
         return Vector3.Dot(crossProduct1, crossProduct2) >= 0;
     }
 
+    /// <summary>
+    /// Checks if a point is inside a triangle defined by three vertices.
+    /// </summary>
+    /// <param name="point">The point to check.</param>
+    /// <param name="vertex1">The first vertex of the triangle.</param>
+    /// <param name="vertex2">The second vertex of the triangle.</param>
+    /// <param name="vertex3">The third vertex of the triangle.</param>
+    /// <returns>True if the point is inside the triangle, otherwise false.</returns>
     private bool IsPointInTriangle(Vector3 point, Vector3 vertex1, Vector3 vertex2, Vector3 vertex3)
     {
         return ArePointsOnSameSide(point, vertex1, vertex2, vertex3) &&
@@ -109,6 +158,11 @@ public class Graph : MonoBehaviour
                ArePointsOnSameSide(point, vertex3, vertex1, vertex2);
     }
 
+    /// <summary>
+    /// Gets the node that contains a given point.
+    /// </summary>
+    /// <param name="point">The point to check.</param>
+    /// <returns>The node that contains the point, or null if no node contains the point.</returns>
     public Node GetNodeContainingPoint(Vector3 point)
     {
         foreach (var nodePair in Nodes)

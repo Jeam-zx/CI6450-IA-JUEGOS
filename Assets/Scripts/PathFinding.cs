@@ -196,6 +196,11 @@ public class PathFinding : MonoBehaviour
                 if (path.Count > 0)
                 {
                     character.UpdateSteering(GetSteering(path[0]), maxAcceleration / 2);
+                    if (character.velocity.x > 0) {
+                        gameObject.transform.localScale = new Vector3(-1, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+                    } else {
+                        gameObject.transform.localScale = new Vector3(1, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+                    }
                 }
             }
         }

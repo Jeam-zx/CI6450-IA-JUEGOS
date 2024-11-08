@@ -12,6 +12,8 @@ TagManager:
   - jar
   - three
   - box
+  - Enemy
+  - Base
   layers:
   - Default
   - TransparentFX
