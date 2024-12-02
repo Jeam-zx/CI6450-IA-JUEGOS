@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// Class that represents a graph structure with nodes and edges.
@@ -11,6 +12,10 @@ public class Graph : MonoBehaviour
     /// </summary>
     public Dictionary<int, Node> Nodes { get; private set; } = new Dictionary<int, Node>();
 
+    public List<TacticalPoint> tacticalPoints = new();
+
+    [SerializeField] private LayerMask hideSpotLayerMask;
+
     /// <summary>
     /// Initializes the graph by calculating nodes and edges, and drawing triangles.
     /// </summary>
@@ -19,6 +24,7 @@ public class Graph : MonoBehaviour
         CalculateNodes();
         CalculateEdges();
         DrawTriangles();
+        InitializeTacticalPoints();
     }
 
     /// <summary>
@@ -48,6 +54,64 @@ public class Graph : MonoBehaviour
             Nodes.Add(node1.Id, node1);
             Nodes.Add(node2.Id, node2);
         }
+    }
+        
+    private void InitializeTacticalPoints()
+    {
+        // Handle all map squares and their triangles
+        foreach (GameObject square in GameObject.FindGameObjectsWithTag("map"))
+        {
+            Vector3 topLeft = square.transform.position + new Vector3(-square.transform.localScale.x / 2, square.transform.localScale.y / 2, 0);
+            Vector3 topRight = square.transform.position + new Vector3(square.transform.localScale.x / 2, square.transform.localScale.y / 2, 0);
+            Vector3 bottomRight = square.transform.position + new Vector3(square.transform.localScale.x / 2, -square.transform.localScale.y / 2, 0);
+            Vector3 bottomLeft = square.transform.position + new Vector3(-square.transform.localScale.x / 2, -square.transform.localScale.y / 2, 0);
+
+            // Calculate triangle centers
+            Vector3 triangle1Center = (topLeft + topRight + bottomLeft) / 3;
+            Vector3 triangle2Center = (bottomRight + topRight + bottomLeft) / 3;
+
+            CheckTriangleForTacticalPoints(square, triangle1Center);
+            CheckTriangleForTacticalPoints(square, triangle2Center);
+        }
+    }
+    
+    private void CheckTriangleForTacticalPoints(GameObject square, Vector3 triangleCenter)
+    {
+        // Check for HidingGrove points
+        foreach (GameObject grove in GameObject.FindGameObjectsWithTag("grove"))
+        {
+            if (Vector3.Distance(grove.transform.position, triangleCenter) < 0.5f)
+            {
+                AddTacticalPoint(square, 1, TacticalPointType.HidingGrove, triangleCenter);
+            }
+        }
+    
+        // Check for PoisonArea points
+        foreach (GameObject mushroom in GameObject.FindGameObjectsWithTag("mushroom"))
+        {
+            if (Vector3.Distance(mushroom.transform.position, triangleCenter) < 0.5f)
+            {
+                AddTacticalPoint(square, 1, TacticalPointType.PoisonArea, triangleCenter);
+            }
+        }
+    
+        // Check for ResourceSpot points
+        foreach (GameObject jar in GameObject.FindGameObjectsWithTag("jar"))
+        {
+            if (Vector3.Distance(jar.transform.position, triangleCenter) < 0.5f)
+            {
+                AddTacticalPoint(square, 1, TacticalPointType.ResourceSpot, triangleCenter);
+            }
+        }
+    }
+    
+    private void AddTacticalPoint(GameObject square, int t, TacticalPointType type, Vector3 triangleCenter)
+    {
+        var tacticalPoint = square.AddComponent<TacticalPoint>();
+        tacticalPoint.t = t;
+        tacticalPoint.type = type;
+        tacticalPoint.position = triangleCenter;
+        tacticalPoints.Add(tacticalPoint);
     }
 
     /// <summary>
@@ -116,6 +180,11 @@ public class Graph : MonoBehaviour
             Debug.DrawLine(vertices[0], vertices[1], Color.white);
             Debug.DrawLine(vertices[1], vertices[2], Color.white);
             Debug.DrawLine(vertices[2], vertices[0], Color.white);
+
+            Vector3 centroid = nodePair.Value.Center;
+
+            // Draw a circle at the centroid
+            DrawCircle(centroid, 0.05f, Color.red);
         }
     }
 
@@ -174,4 +243,33 @@ public class Graph : MonoBehaviour
 
         return null;
     }
+
+    /// <summary>
+    /// Draws a circle at the specified position.
+    /// </summary>
+    /// <param name="position">The position of the circle.</param>
+    /// <param name="radius">The radius of the circle.</param>
+    /// <param name="color">The color of the circle.</param>
+    private void DrawCircle(Vector3 position, float radius, Color color)
+    {
+        int segments = 20;
+        float angle = 0f;
+        float angleStep = 360f / segments;
+    
+        Vector3 lastPoint = position + new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle) * radius, Mathf.Sin(Mathf.Deg2Rad * angle) * radius, 0f);
+    
+        for (int i = 1; i <= segments; i++)
+        {
+            angle += angleStep;
+            Vector3 nextPoint = position + new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle) * radius, Mathf.Sin(Mathf.Deg2Rad * angle) * radius, 0f);
+            
+            // Draw the outer circle
+            Debug.DrawLine(lastPoint, nextPoint, color);
+            
+            // Draw lines from the center to the edge to create a filled effect
+            Debug.DrawLine(position, nextPoint, color);
+            
+            lastPoint = nextPoint;
+        }
+    }   
 }
