@@ -78,7 +78,7 @@ public static class Actions
         // Check if the AI has arrived at the target
         if (isFindingPath)
         {
-            if (gameObject.GetComponent<PathFinding>().hasArrived())
+            if (gameObject.GetComponent<PathFinding>().HasArrived())
             {
                 if (!isWaiting)
                 {
