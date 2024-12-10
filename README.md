@@ -1,4 +1,4 @@
-# Proyecto 2 - CI6450 (Septiembre-Diciembre 2024)
+# Proyecto Final - CI6450 (Septiembre-Diciembre 2024)
 
 ## Estudiante
 
